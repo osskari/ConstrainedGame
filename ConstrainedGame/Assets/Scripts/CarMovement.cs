@@ -6,6 +6,7 @@ public class CarMovement : MonoBehaviour
 {
     private Rigidbody2D body;
     public float acceleration, steering;
+    private int score;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,20 +36,27 @@ public class CarMovement : MonoBehaviour
         }
 
         Vector2 perpendicular = Quaternion.AngleAxis(body.angularVelocity > 0 ? -90 : 90, Vector3.forward) * new Vector2(0.0f, 0.5f);
+        float counterSlide = Vector2.Dot(body.velocity, body.GetRelativeVector(perpendicular.normalized));
 
-        body.AddForce(body.GetRelativeVector(-perpendicular.normalized * (Vector2.Dot(body.velocity, body.GetRelativeVector(perpendicular.normalized))) * 0.3f));
+        AddScore(perpendicular, counterSlide);
+
+        body.AddForce(body.GetRelativeVector(-perpendicular.normalized * counterSlide * 0.3f));
     }
 
-
-    Vector2 ForwardVelocity()
+    void AddScore(Vector2 perpendicular, float counterSlide)
     {
-        return transform.up * Vector2.Dot(body.velocity, transform.up);
+        if (Mathf.Abs(Vector2.Dot(body.velocity.normalized, body.GetRelativeVector(perpendicular.normalized))) > 0.6f)
+        {
+            score += Mathf.Abs(Mathf.RoundToInt(counterSlide));
+        }
+        Debug.Log(
+            Mathf.Abs(
+                Mathf.RoundToInt(
+                    (
+                        ((body.velocity.magnitude * 0.5f) * (counterSlide * 2)) * 0.1f
+                    )
+                )
+            )
+        );
     }
-
-    Vector2 RightVelocity()
-    {
-        return transform.up * Vector2.Dot(body.velocity, transform.right);
-    }
-
-
 }
