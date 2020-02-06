@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6095152747460881331}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.12, z: 0}
-  m_LocalScale: {x: 0.013607087, y: 0.013607087, z: 0.013607087}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.023159262, y: 0.023159262, z: 0.023159262}
   m_Children: []
   m_Father: {fileID: 6095152747636694239}
   m_RootOrder: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_Size: {x: 19.2, y: 40.96}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &6095152747636694232
@@ -91,7 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6095152747636694239}
   - component: {fileID: 6095152747636694238}
-  - component: {fileID: 6095152747636694233}
+  - component: {fileID: 5555120652962130453}
   m_Layer: 0
   m_Name: CarObject2
   m_TagString: Untagged
@@ -135,7 +135,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &6095152747636694233
+--- !u!114 &5555120652962130453
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,8 +144,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6095152747636694232}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff8b5e8c03a24c641953efbda2b491ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c9a59aa3cb8c1d4892bffdd75cb4027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 44.91
-  steering: 8.68
+  acceleration: 100
+  steering: 2
