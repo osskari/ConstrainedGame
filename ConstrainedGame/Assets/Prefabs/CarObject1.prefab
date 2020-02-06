@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2356132702277007502}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.1288676, y: -0.40049917, z: 0}
-  m_LocalScale: {x: 0.17684773, y: 0.17684773, z: 0.17684773}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8599921726311809336}
   m_Father: {fileID: 0}
@@ -45,9 +45,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 0.2
+  m_LinearDrag: 1
+  m_AngularDrag: 2
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -66,8 +66,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8b5e8c03a24c641953efbda2b491ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 44.91
-  steering: 8.68
+  acceleration: 100
+  steering: 2
 --- !u!1 &5281203619063216538
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,8 +93,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5281203619063216538}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.72, z: 0}
-  m_LocalScale: {x: 0.32385, y: 0.32385, z: 0.32385}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 33.61182, y: 33.61182, z: 33.61182}
   m_Children: []
   m_Father: {fileID: 3199786753990620177}
   m_RootOrder: 0
@@ -138,12 +138,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ff93e60ded2626f45a4baebd59b1fa2f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a54b1dabbe9d5f243873ea2edec0dba9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.64}
+  m_Size: {x: 19.2, y: 40.96}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
