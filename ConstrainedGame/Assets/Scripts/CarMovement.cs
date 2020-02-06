@@ -41,6 +41,7 @@ public class CarMovement : MonoBehaviour
         AddScore(perpendicular, counterSlide);
 
         body.AddForce(body.GetRelativeVector(-perpendicular.normalized * counterSlide * (vert == 0 ? 1f : 0.1f)));
+
     }
 
     void AddScore(Vector2 perpendicular, float counterSlide)
