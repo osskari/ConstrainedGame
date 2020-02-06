@@ -40,23 +40,15 @@ public class CarMovement : MonoBehaviour
 
         AddScore(perpendicular, counterSlide);
 
-        body.AddForce(body.GetRelativeVector(-perpendicular.normalized * counterSlide * 0.3f));
+        body.AddForce(body.GetRelativeVector(-perpendicular.normalized * counterSlide * (vert == 0 ? 1f : 0.1f)));
     }
 
     void AddScore(Vector2 perpendicular, float counterSlide)
     {
-        if (Mathf.Abs(Vector2.Dot(body.velocity.normalized, body.GetRelativeVector(perpendicular.normalized))) > 0.6f)
+        var counterNormal = Vector2.Dot(body.velocity.normalized, body.GetRelativeVector(perpendicular.normalized));
+        if (Mathf.Abs(counterNormal) > 0.6f)
         {
-            score += Mathf.Abs(Mathf.RoundToInt(counterSlide));
+            score += Mathf.Abs(Mathf.RoundToInt((((body.velocity.magnitude * 0.5f) * (counterNormal * 10f)) * 0.1f)));
         }
-        Debug.Log(
-            Mathf.Abs(
-                Mathf.RoundToInt(
-                    (
-                        ((body.velocity.magnitude * 0.5f) * (counterSlide * 2)) * 0.1f
-                    )
-                )
-            )
-        );
     }
 }
