@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class CarMovement1 : MonoBehaviour
 {
     private Rigidbody2D body;
     public float acceleration, steering;
     private int score;
+    public TextMeshProUGUI scoreText;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +51,7 @@ public class CarMovement1 : MonoBehaviour
         if (Mathf.Abs(counterNormal) > 0.6f)
         {
             score += Mathf.Abs(Mathf.RoundToInt((((body.velocity.magnitude * 0.5f) * (counterNormal * 10f)) * 0.1f)));
+            scoreText.text = score.ToString();
         }
     }
 }

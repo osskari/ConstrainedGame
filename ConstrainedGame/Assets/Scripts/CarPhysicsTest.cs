@@ -9,18 +9,18 @@ public class CarPhysicsTest : MonoBehaviour
     public float turnpower = 2;
     public float friction = 3;
     public Vector2 curspeed;
-    Rigidbody2D rigidbody2D;
+    Rigidbody2D rb;
 
     // Use this for initialization
     void Start()
     {
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
 
     void FixedUpdate()
     {
-        curspeed = new Vector2(rigidbody2D.velocity.x, rigidbody2D.velocity.y);
+        curspeed = new Vector2(rb.velocity.x, rb.velocity.y);
 
         if (curspeed.magnitude > maxspeed)
         {
@@ -30,13 +30,13 @@ public class CarPhysicsTest : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W))
         {
-            rigidbody2D.AddForce(transform.up * power);
-            rigidbody2D.drag = friction;
+            rb.AddForce(transform.up * power);
+            rb.drag = friction;
         }
         if (Input.GetKey(KeyCode.S))
         {
-            rigidbody2D.AddForce(-(transform.up) * (power / 2));
-            rigidbody2D.drag = friction;
+            rb.AddForce(-(transform.up) * (power / 2));
+            rb.drag = friction;
         }
         if (Input.GetKey(KeyCode.A))
         {
@@ -65,7 +65,7 @@ public class CarPhysicsTest : MonoBehaviour
 
         if (!gas)
         {
-            rigidbody2D.drag = friction * 2;
+            rb.drag = friction * 2;
         }
     }
 }
