@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class UIController : MonoBehaviour
 {
@@ -16,21 +16,22 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
             ShowStartMenu(false);
             Restart();
         }
-        if(Input.GetKey(KeyCode.R))
+        if (Input.GetKey(KeyCode.R))
         {
             Restart();
         }
-        if(Input.GetKey(KeyCode.B)) ShowEndScreen(true);
+        // TODO Remove later
+        if (Input.GetKey(KeyCode.B)) ShowEndScreen(true);
     }
 
     public void ShowStartMenu(bool show)
     {
-        if(backgroundPanel.activeInHierarchy == show && startMenu.activeInHierarchy == show) return;
+        if (backgroundPanel.activeInHierarchy == show && startMenu.activeInHierarchy == show) return;
         backgroundPanel.SetActive(show);
         startMenu.SetActive(show);
         endScreen.SetActive(false);
@@ -39,7 +40,7 @@ public class UIController : MonoBehaviour
 
     public void ShowEndScreen(bool show)
     {
-        if(backgroundPanel.activeInHierarchy == show && endScreen.activeInHierarchy == show) return;
+        if (backgroundPanel.activeInHierarchy == show && endScreen.activeInHierarchy == show) return;
         backgroundPanel.SetActive(show);
         endScreen.SetActive(show);
         startMenu.SetActive(false);
@@ -48,10 +49,15 @@ public class UIController : MonoBehaviour
 
     public void Restart()
     {
-        if(endScreen.activeInHierarchy)
+        if (endScreen.activeInHierarchy)
         {
             ShowEndScreen(false);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+    }
+
+    public void WinningPlayer(string playerNumber)
+    {
+        endScreen.GetComponentsInChildren<TextMeshProUGUI>(true)[2].text = endScreen.GetComponentsInChildren<TextMeshProUGUI>(true)[2].text.Replace("X", playerNumber);
     }
 }
