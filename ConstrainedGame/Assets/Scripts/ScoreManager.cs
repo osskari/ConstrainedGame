@@ -12,6 +12,7 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI activeScoreText;
     public TextMeshProUGUI comboText;
+    public SkidmarkManager skids;
     private float driftThreshold = 0.7f;
     private int comboMultiplier = 1;
     //Is the player currently above the drift threshold
@@ -42,7 +43,13 @@ public class ScoreManager : MonoBehaviour
         Vector2 perpendicular = Quaternion.AngleAxis(body.angularVelocity > 0 ? -90 : 90, Vector3.forward) * new Vector2(0.0f, 0.5f);
         float counterNormal = Vector2.Dot(body.velocity.normalized, body.GetRelativeVector(perpendicular.normalized));
 
-
+        if (isDrifting)
+        {
+            skids.BeginDraw();
+        } else
+        {
+            skids.EndDraw();
+        }
         //If player crashes, reset combo and active points
 
         //Moment  the player falls below drift threshold

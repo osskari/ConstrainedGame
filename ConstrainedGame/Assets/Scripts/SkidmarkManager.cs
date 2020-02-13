@@ -6,7 +6,7 @@ public class SkidmarkManager : MonoBehaviour
 {
     public List<TrailRenderer> wheels;
 
-    void BeginDraw()
+    public void BeginDraw()
     {
         for (int i = 0; i < wheels.Count; i++)
         {
@@ -14,7 +14,7 @@ public class SkidmarkManager : MonoBehaviour
         }
     }
 
-    void EndDraw()
+    public void EndDraw()
     {
         for (int i = 0; i < wheels.Count; i++)
         {
