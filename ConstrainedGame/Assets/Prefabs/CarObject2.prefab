@@ -229,7 +229,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Time: 0.94
+  m_Time: 0.34
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -238,16 +238,16 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.18218058
-        inSlope: 0
-        outSlope: 0
+        value: 0
+        inSlope: 4.213018
+        outSlope: 4.213018
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.33333334
+        outWeight: 0.073033705
       - serializedVersion: 3
         time: 1
-        value: 0.13804018
+        value: 0.8667847
         inSlope: -0.044421915
         outSlope: -0.044421915
         tangentMode: 0
@@ -505,6 +505,8 @@ MonoBehaviour:
   activeScoreText: {fileID: 0}
   comboText: {fileID: 0}
   skids: {fileID: 1947464802528721218}
+  driftThreshold: 0.7
+  skidamarkThreshold: 0.42
 --- !u!1 &6427477971729572185
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,7 +578,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Time: 0.94
+  m_Time: 0.34
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -585,16 +587,16 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.18218058
-        inSlope: 0
-        outSlope: 0
+        value: 0
+        inSlope: 4.213018
+        outSlope: 4.213018
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.33333334
+        outWeight: 0.073033705
       - serializedVersion: 3
         time: 1
-        value: 0.13804018
+        value: 0.8667847
         inSlope: -0.044421915
         outSlope: -0.044421915
         tangentMode: 0
