@@ -251,6 +251,7 @@ GameObject:
   - component: {fileID: 6095152747636694238}
   - component: {fileID: 5555120652962130453}
   - component: {fileID: 1947464802528721218}
+  - component: {fileID: 1414608477548212862}
   m_Layer: 0
   m_Name: CarObject2
   m_TagString: Untagged
@@ -267,7 +268,7 @@ Transform:
   m_GameObject: {fileID: 6095152747636694232}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -4.7, y: -4.28, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 2.022169, y: 2.022169, z: 2.022169}
   m_Children:
   - {fileID: 6095152747460881328}
   - {fileID: 9206965730114133478}
@@ -311,8 +312,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c9a59aa3cb8c1d4892bffdd75cb4027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 100
-  steering: 2
+  acceleration: 131.17
+  steering: 2.06
   scoreText: {fileID: 0}
 --- !u!114 &1947464802528721218
 MonoBehaviour:
@@ -331,6 +332,23 @@ MonoBehaviour:
   - {fileID: 2089336657422090771}
   - {fileID: 719712059849125584}
   - {fileID: 3892377272273503301}
+--- !u!114 &1414608477548212862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6095152747636694232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70223cad84f642545aab93874ce225e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  body: {fileID: 6095152747636694238}
+  scoreText: {fileID: 0}
+  activeScoreText: {fileID: 0}
+  comboText: {fileID: 0}
+  skids: {fileID: 1947464802528721218}
 --- !u!1 &6656288167962509417
 GameObject:
   m_ObjectHideFlags: 0
