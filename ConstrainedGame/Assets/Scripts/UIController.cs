@@ -7,6 +7,7 @@ using TMPro;
 public class UIController : MonoBehaviour
 {
     public GameObject backgroundPanel, startMenu, endScreen;
+    public Countdown timer;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +36,14 @@ public class UIController : MonoBehaviour
         backgroundPanel.SetActive(show);
         startMenu.SetActive(show);
         endScreen.SetActive(false);
-        Time.timeScale = show ? 0f : 1f;
+        if(show)
+        {
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            timer.StartTimer();
+        }
     }
 
     public void ShowEndScreen(bool show)
