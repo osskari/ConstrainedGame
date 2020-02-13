@@ -138,7 +138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9206965730114133478}
   m_Layer: 0
-  m_Name: CameraFollow
+  m_Name: CameraFollowPlayer2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,7 +152,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1555489414041304829}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 2.206, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6095152747636694239}
@@ -305,6 +305,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6095152747460881328}
   - component: {fileID: 6095152747460881329}
+  - component: {fileID: 2122237634}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -376,6 +377,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!70 &2122237634
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6095152747460881331}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.08325402, y: 0.72748613}
+  m_Size: {x: 16.702202, y: 32.931618}
+  m_Direction: 0
 --- !u!1 &6095152747636694232
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,7 +405,6 @@ GameObject:
   - component: {fileID: 6095152747636694238}
   - component: {fileID: 5555120652962130453}
   - component: {fileID: 1947464802528721218}
-  - component: {fileID: 1414608477548212862}
   - component: {fileID: 5309583664140419678}
   m_Layer: 0
   m_Name: CarObject2
@@ -470,25 +486,8 @@ MonoBehaviour:
   wheels:
   - {fileID: 6908071676772372231}
   - {fileID: 2089336657422090771}
-  - {fileID: 719712059849125584}
-  - {fileID: 3892377272273503301}
---- !u!114 &1414608477548212862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6095152747636694232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70223cad84f642545aab93874ce225e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  body: {fileID: 6095152747636694238}
-  scoreText: {fileID: 0}
-  activeScoreText: {fileID: 0}
-  comboText: {fileID: 0}
-  skids: {fileID: 1947464802528721218}
+  - {fileID: 7706041108888875937}
+  - {fileID: 5166084681883940370}
 --- !u!114 &5309583664140419678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -842,7 +841,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Time: 5906.44
+  m_Time: Infinity
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -970,7 +969,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Time: 5906.44
+  m_Time: Infinity
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
