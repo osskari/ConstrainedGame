@@ -2219,7 +2219,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Time: 1.67
   m_Parameters:
     serializedVersion: 3
@@ -3365,6 +3365,11 @@ PrefabInstance:
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
       value: 0.075904846
       objectReference: {fileID: 0}
+    - target: {fileID: 4845508899924044878, guid: bdd2d3b93f479fb40bad9f342e1cd950,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5281203619063216538, guid: bdd2d3b93f479fb40bad9f342e1cd950,
         type: 3}
       propertyPath: m_IsActive
@@ -3375,6 +3380,11 @@ PrefabInstance:
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
       value: 0.075904846
       objectReference: {fileID: 0}
+    - target: {fileID: 7924884599529650285, guid: bdd2d3b93f479fb40bad9f342e1cd950,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8455513118393942530, guid: bdd2d3b93f479fb40bad9f342e1cd950,
         type: 3}
       propertyPath: m_Name
@@ -3383,7 +3393,7 @@ PrefabInstance:
     - target: {fileID: 8464640432603434876, guid: bdd2d3b93f479fb40bad9f342e1cd950,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8464640432603434876, guid: bdd2d3b93f479fb40bad9f342e1cd950,
         type: 3}
@@ -3395,6 +3405,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
       value: 0.075904846
+      objectReference: {fileID: 0}
+    - target: {fileID: 8738641175577306672, guid: bdd2d3b93f479fb40bad9f342e1cd950,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdd2d3b93f479fb40bad9f342e1cd950, type: 3}
@@ -3418,6 +3433,11 @@ PrefabInstance:
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
       value: 0.075904846
       objectReference: {fileID: 0}
+    - target: {fileID: 719712059849125584, guid: 034293e189f077645a789b72a3ea486d,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1555489414041304829, guid: 034293e189f077645a789b72a3ea486d,
         type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
@@ -3428,10 +3448,20 @@ PrefabInstance:
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
       value: 0.075904846
       objectReference: {fileID: 0}
+    - target: {fileID: 2089336657422090771, guid: 034293e189f077645a789b72a3ea486d,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3892377272273503301, guid: 034293e189f077645a789b72a3ea486d,
         type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
       value: 0.075904846
+      objectReference: {fileID: 0}
+    - target: {fileID: 3892377272273503301, guid: 034293e189f077645a789b72a3ea486d,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5555120652962130453, guid: 034293e189f077645a789b72a3ea486d,
         type: 3}
@@ -3489,6 +3519,11 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6095152747460881329, guid: 034293e189f077645a789b72a3ea486d,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6095152747636694232, guid: 034293e189f077645a789b72a3ea486d,
         type: 3}
       propertyPath: m_Name
@@ -3528,6 +3563,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
       value: 0.075904846
+      objectReference: {fileID: 0}
+    - target: {fileID: 6908071676772372231, guid: 034293e189f077645a789b72a3ea486d,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9206965730114133478, guid: 034293e189f077645a789b72a3ea486d,
         type: 3}
