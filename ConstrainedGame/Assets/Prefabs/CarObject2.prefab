@@ -470,8 +470,8 @@ MonoBehaviour:
   wheels:
   - {fileID: 6908071676772372231}
   - {fileID: 2089336657422090771}
-  - {fileID: 719712059849125584}
-  - {fileID: 3892377272273503301}
+  - {fileID: 7706041108888875937}
+  - {fileID: 5166084681883940370}
 --- !u!114 &1414608477548212862
 MonoBehaviour:
   m_ObjectHideFlags: 0
