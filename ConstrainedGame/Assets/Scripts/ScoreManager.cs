@@ -42,6 +42,7 @@ public class ScoreManager : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("wassup");
         if(collision.collider.CompareTag("TrackCollider"))
         {
             if(activeCoroutineScoreFlash == null)
