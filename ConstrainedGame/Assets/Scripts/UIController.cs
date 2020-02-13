@@ -17,12 +17,12 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            ShowStartMenu(false);
             Restart();
+            ShowStartMenu(false);
         }
-        if (Input.GetKey(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             Restart();
         }
@@ -59,8 +59,7 @@ public class UIController : MonoBehaviour
     {
         if (endScreen.activeInHierarchy)
         {
-            ShowEndScreen(false);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(0);
         }
     }
 
