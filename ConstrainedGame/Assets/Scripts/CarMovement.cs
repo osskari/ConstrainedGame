@@ -39,7 +39,7 @@ public class CarMovement : MonoBehaviour
         Vector2 perpendicular = Quaternion.AngleAxis(body.angularVelocity > 0 ? -90 : 90, Vector3.forward) * new Vector2(0.0f, 0.5f);
         float counterSlide = Vector2.Dot(body.velocity, body.GetRelativeVector(perpendicular.normalized));
 
-        AddScore(perpendicular, counterSlide);
+        //AddScore(perpendicular, counterSlide);
 
         body.AddForce(body.GetRelativeVector(-perpendicular.normalized * counterSlide * (vert == 0 ? 1f : 0.1f)));
 
