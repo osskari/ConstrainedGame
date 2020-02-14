@@ -10,10 +10,14 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI activeScoreText;
     public TextMeshProUGUI comboText;
-
+    //Driving under this times give the player a time bonus
+    public float parTime;
+    //Exceeding this time give the player a penalty
+    public float penaltyTime;
 
     private int score = 0;
     private int activeScore = 0;
+    private int timeBonus = 0;
     private int comboMultiplier = 1;
     public SkidmarkManager skids;
     private float driftThreshold = 0.7f;
@@ -42,7 +46,6 @@ public class ScoreManager : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("wassup");
         if(collision.collider.CompareTag("TrackCollider"))
         {
             if(activeCoroutineScoreFlash == null)
@@ -60,12 +63,14 @@ public class ScoreManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //Debug.Log(comboMultiplier);
+
         timeBetweenDrifts += Time.fixedDeltaTime;
         timeSinceLastDrift += Time.fixedDeltaTime;
         Vector2 perpendicular = Quaternion.AngleAxis(body.angularVelocity > 0 ? -90 : 90, Vector3.forward) * new Vector2(0.0f, 0.5f);
         float counterNormal = Vector2.Dot(body.velocity.normalized, body.GetRelativeVector(perpendicular.normalized));
 
+
+        SetTimeBonusPoints();
 
         //If player crashes, reset combo and active points
 
@@ -112,6 +117,7 @@ public class ScoreManager : MonoBehaviour
     {
         if (Mathf.Abs(counterNormal) > driftThreshold)
         {
+            timeSinceLastDrift = 0;
             isDrifting = true;
             activeScore += Mathf.Abs(Mathf.RoundToInt((((body.velocity.magnitude * 0.5f) * (counterNormal * 10f)) * 0.1f)) * comboMultiplier);
             SetActiveScoreText();
@@ -175,7 +181,6 @@ public class ScoreManager : MonoBehaviour
 
     IEnumerator ActiveScoreCollisionFlash(float delay)
     {
-
         if(activeScore != 0)
         {
             activeScoreText.color = new Color(255, 0, 0);
@@ -187,6 +192,19 @@ public class ScoreManager : MonoBehaviour
         SetComboText();
         SetActiveScoreText();
         activeCoroutineScoreFlash = null;
+    }
+
+    void SetTimeBonusPoints()
+    {
+        //Get Finish time from player
+
+        //See how far over/under par time he is
+
+        //If player is below par time, award bonus points in chunks i.e 2 sec under = X , 4 sec under = y, 6 sec under = z etc
+
+        //If player is above par but below penalty time threshold, award no bonus points
+
+        //If player is between par time and penalty 
     }
 
 }
