@@ -57,7 +57,7 @@ public class UIController : MonoBehaviour
 
     public void Restart()
     {
-        if (endScreen.activeInHierarchy)
+        if (endScreen.activeInHierarchy || Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(0);
         }
