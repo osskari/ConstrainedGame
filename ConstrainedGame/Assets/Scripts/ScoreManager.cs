@@ -10,6 +10,7 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI activeScoreText;
     public TextMeshProUGUI comboText;
+    public AudioSource tyreSound, wallHit;
 
 
     private int score = 0;
@@ -42,6 +43,10 @@ public class ScoreManager : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if(!wallHit.isPlaying)
+        {
+            wallHit.Play();
+        }
         if(collision.collider.CompareTag("TrackCollider"))
         {
             if(activeCoroutineScoreFlash == null)
@@ -55,6 +60,14 @@ public class ScoreManager : MonoBehaviour
     void Update()
     {
         DrawSkidMarks();
+        if(!isDrifting)
+        {
+            tyreSound.Stop();
+        }
+        else if(isDrifting && !tyreSound.isPlaying)
+        {
+            tyreSound.Play();
+        }
     }
 
     private void FixedUpdate()
