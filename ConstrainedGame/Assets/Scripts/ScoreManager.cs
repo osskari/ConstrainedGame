@@ -5,18 +5,24 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
-
     public Rigidbody2D body;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI activeScoreText;
     public TextMeshProUGUI comboText;
+    //Driving under this times give the player a time bonus
+    private float parTime = 100f;
+    //Exceeding this time give the player a penalty
+    private float penaltyTime = 120f;
     public AudioSource tyreSound, wallHit;
 
     private int stage;
     private int laps;
+    private float lapTimer;
+    private bool startLapTimer = false;
 
     private int score = 0;
     private int activeScore = 0;
+    private int timeBonus = 0;
     private int comboMultiplier = 1;
     public SkidmarkManager skids;
     private float driftThreshold = 0.7f;
@@ -47,13 +53,13 @@ public class ScoreManager : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(!wallHit.isPlaying)
+        if (!wallHit.isPlaying)
         {
             wallHit.Play();
         }
-        if(collision.collider.CompareTag("TrackCollider"))
+        if (collision.collider.CompareTag("TrackCollider"))
         {
-            if(activeCoroutineScoreFlash == null)
+            if (activeCoroutineScoreFlash == null)
             {
                 activeCoroutineScoreFlash = StartCoroutine("ActiveScoreCollisionFlash", 0.3f);
             }
@@ -64,19 +70,23 @@ public class ScoreManager : MonoBehaviour
     void Update()
     {
         DrawSkidMarks();
-        if(!isDrifting)
+        if (startLapTimer)
         {
-            tyreSound.Stop();
-        }
-        else if(isDrifting && !tyreSound.isPlaying)
-        {
-            tyreSound.Play();
+            lapTimer += Time.deltaTime;
+            if (!isDrifting)
+            {
+                tyreSound.Stop();
+            }
+            else if (isDrifting && !tyreSound.isPlaying)
+            {
+                tyreSound.Play();
+            }
         }
     }
 
     private void FixedUpdate()
     {
-        //Debug.Log(comboMultiplier);
+
         timeBetweenDrifts += Time.fixedDeltaTime;
         timeSinceLastDrift += Time.fixedDeltaTime;
         Vector2 perpendicular = Quaternion.AngleAxis(body.angularVelocity > 0 ? -90 : 90, Vector3.forward) * new Vector2(0.0f, 0.5f);
@@ -86,7 +96,7 @@ public class ScoreManager : MonoBehaviour
         //If player crashes, reset combo and active points
 
         //Moment  the player falls below drift threshold
-        if(isDrifting && (Mathf.Abs(counterNormal) < driftThreshold))
+        if (isDrifting && (Mathf.Abs(counterNormal) < driftThreshold))
         {
             //Set variable depending on drift direction
             previousDriftSign = counterNormal > 0 ? 1 : -1;
@@ -96,7 +106,7 @@ public class ScoreManager : MonoBehaviour
         }
 
         //Moment player starts drifting
-        if(!isDrifting && (Mathf.Abs(counterNormal) > driftThreshold))
+        if (!isDrifting && (Mathf.Abs(counterNormal) > driftThreshold))
         {
             //Check if player is driftin in another direction then before and is within x time
             if ((previousDriftSign * counterNormal) < 0 && timeBetweenDrifts < timeBetweenDriftThreshold)
@@ -110,7 +120,7 @@ public class ScoreManager : MonoBehaviour
         }
 
         //If timeBetweenDrifts exceeds X time , add active score and reset active score/multipliers
-        if(timeSinceLastDrift > gainActiveScoreThreshold)
+        if (timeSinceLastDrift > gainActiveScoreThreshold)
         {
             //Add to overall score and reset current and multiplier
             score += activeScore;
@@ -128,6 +138,7 @@ public class ScoreManager : MonoBehaviour
     {
         if (Mathf.Abs(counterNormal) > driftThreshold)
         {
+            timeSinceLastDrift = 0;
             isDrifting = true;
             activeScore += Mathf.Abs(Mathf.RoundToInt((((body.velocity.magnitude * 0.5f) * (counterNormal * 10f)) * 0.1f)) * comboMultiplier);
             SetActiveScoreText();
@@ -153,17 +164,17 @@ public class ScoreManager : MonoBehaviour
     void SetComboText()
     {
         comboText.text = "x" + comboMultiplier.ToString();
-        if(comboMultiplier == 1)
+        if (comboMultiplier == 1)
         {
             comboText.color = new Color32(255, 255, 255, 255);
             comboText.fontSize = 24;
         }
-        else if(comboMultiplier == 2)
+        else if (comboMultiplier == 2)
         {
             comboText.color = new Color32(0, 112, 221, 255);
             comboText.fontSize = 28;
         }
-        else if(comboMultiplier == 3)
+        else if (comboMultiplier == 3)
         {
             comboText.color = new Color32(150, 15, 238, 255);
             comboText.fontSize = 32;
@@ -182,7 +193,7 @@ public class ScoreManager : MonoBehaviour
 
     void SetActiveScoreText()
     {
-        if(activeCoroutineScoreFlash == null)
+        if (activeCoroutineScoreFlash == null)
         {
             activeScoreText.text = activeScore.ToString();
             activeScoreText.color = new Color(255, 255, 255);
@@ -191,8 +202,7 @@ public class ScoreManager : MonoBehaviour
 
     IEnumerator ActiveScoreCollisionFlash(float delay)
     {
-
-        if(activeScore != 0)
+        if (activeScore != 0)
         {
             activeScoreText.color = new Color(255, 0, 0);
         }
@@ -205,16 +215,51 @@ public class ScoreManager : MonoBehaviour
         activeCoroutineScoreFlash = null;
     }
 
+    void SetTimeBonusPoints()
+    {
+        float timeDifferencePar = parTime - lapTimer;
+        float timeDifferencePenalty = penaltyTime - lapTimer;
+        Debug.Log(lapTimer);
+        Debug.Log(parTime);
+        if (timeDifferencePar >= 0)
+        {
+            timeBonus = 4000 + (int)timeDifferencePar * 200;
+        }
+        else if (timeDifferencePenalty >= 0)
+        {
+            timeBonus = 0;
+        }
+        else
+        {
+            timeBonus = -4000 + (int)timeDifferencePenalty * 200;
+        }
+    }
 
     public void enterStage(int stage)
     {
+        if (this.stage == 0 && laps == 0)
+        {
+            startLapTimer = true;
+        }
+
         if (stage == 0 && this.stage == 3)
         {
             laps++;
             this.stage = 0;
-        } else if (stage-1 == this.stage)
+        } else if (stage - 1 == this.stage)
         {
             this.stage = stage;
         }
+
+        if (laps == 3)
+        {
+            startLapTimer = false;
+            CarMovement m = GetComponent<CarMovement>();
+            CarMovement1 m1 = GetComponent<CarMovement1>();
+            if (m) m.enabled = false;
+            if (m1) m1.enabled = false;
+            SetTimeBonusPoints();
+        }
+
     }
-}
+ }

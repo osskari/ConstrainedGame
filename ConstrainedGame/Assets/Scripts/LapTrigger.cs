@@ -5,7 +5,7 @@ using UnityEngine;
 public class LapTrigger : MonoBehaviour
 {
     [SerializeField]
-    int triggerScore;
+    int triggerScore = 0;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         ScoreManager sm = collision.GetComponentInParent<ScoreManager>();
