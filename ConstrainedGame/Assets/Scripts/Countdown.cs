@@ -8,8 +8,10 @@ public class Countdown : MonoBehaviour
     public GameObject lights;
     public Color32 offColor, onColor;
     public float countdownDuration;
+    public AudioSource beepCount, beepStart;
     private float currentTime, startTime, lightInterval;
     private bool isRunning;
+    private int lastAmount;
     private List<Image> lightList;
     // Start is called before the first frame update
     void Start()
@@ -18,6 +20,7 @@ public class Countdown : MonoBehaviour
         startTime = Time.unscaledTime;
         lightList = new List<Image>();
         lightInterval = countdownDuration/7;
+        lastAmount = 0;
         foreach (Transform child in lights.transform)
         {
             foreach (Transform subchild in child.transform)
@@ -56,6 +59,8 @@ public class Countdown : MonoBehaviour
     {
         isRunning = false;
         Time.timeScale = 1f;
+        lastAmount = 0;
+        beepStart.Play();
     }
 
     private void DisplayTimeGraphic(bool show)
@@ -87,6 +92,11 @@ public class Countdown : MonoBehaviour
 
     private void TurnOnLights(int amount)
     {
+        if(amount > 0 && amount < 6 && amount > lastAmount)
+        {
+            lastAmount = amount;
+            beepCount.Play();
+        }
         for(var i = 0; i < lightList.Count; i++)
         {
             lightList[i].color = i >= amount ? offColor : onColor;
