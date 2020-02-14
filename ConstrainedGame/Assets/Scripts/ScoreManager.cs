@@ -255,7 +255,7 @@ public class ScoreManager : MonoBehaviour
         {
             startLapTimer = false;
             CarMovement m = GetComponent<CarMovement>();
-            CarMovement m1 = GetComponent<CarMovement1>()
+            CarMovement1 m1 = GetComponent<CarMovement1>();
             if (m) m.enabled = false;
             if (m1) m1.enabled = false;
             SetTimeBonusPoints();
