@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI activeScoreText;
     public TextMeshProUGUI comboText;
+    public Image indicator;
     //Driving under this times give the player a time bonus
     private float parTime = 100f;
     //Exceeding this time give the player a penalty
@@ -36,10 +38,11 @@ public class ScoreManager : MonoBehaviour
     //time between changin drift direction
     private float timeBetweenDrifts = 100f;
     //time since last drift
-    private float timeSinceLastDrift = 0;
+    private float timeSinceLastDrift = 100;
     //How much time is allowed to pass before loosing combo between drifts
     private float timeBetweenDriftThreshold = 2f;
     private float gainActiveScoreThreshold = 2.2f;
+    private bool indicatorBool = true;
 
     private Coroutine activeCoroutineScoreFlash;
 
@@ -64,6 +67,8 @@ public class ScoreManager : MonoBehaviour
         {
             if (activeCoroutineScoreFlash == null)
             {
+                indicator.fillAmount = 0;
+                indicatorBool = false;
                 activeCoroutineScoreFlash = StartCoroutine("ActiveScoreCollisionFlash", 0.3f);
             }
         }
@@ -85,6 +90,13 @@ public class ScoreManager : MonoBehaviour
                 tyreSound.Play();
             }
         }
+
+        //Lerp milli timeSinceLastDrift og gainActiveScorethreshold
+        if(indicatorBool)
+        {
+            indicator.fillAmount = Mathf.Lerp(1f, 0f, timeSinceLastDrift / gainActiveScoreThreshold);
+        }
+
     }
 
     private void FixedUpdate()
@@ -111,7 +123,8 @@ public class ScoreManager : MonoBehaviour
         //Moment player starts drifting
         if (!isDrifting && (Mathf.Abs(counterNormal) > driftThreshold))
         {
-            //Check if player is driftin in another direction then before and is within x time
+            indicatorBool = true;
+            //Check if player is drifting in another direction then before and is within x time
             if ((previousDriftSign * counterNormal) < 0 && timeBetweenDrifts < timeBetweenDriftThreshold)
             {
                 comboMultiplier += 1;
@@ -222,8 +235,6 @@ public class ScoreManager : MonoBehaviour
     {
         float timeDifferencePar = parTime - lapTimer;
         float timeDifferencePenalty = penaltyTime - lapTimer;
-        Debug.Log(lapTimer);
-        Debug.Log(parTime);
         if (timeDifferencePar >= 0)
         {
             timeBonus = 4000 + (int)timeDifferencePar * 200;
