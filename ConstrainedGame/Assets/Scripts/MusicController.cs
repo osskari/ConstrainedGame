@@ -6,10 +6,18 @@ public class MusicController : MonoBehaviour
 {
     public AudioSource song;
     public int startTime;
+    private static MusicController s_Instance = null;
 
     private void Awake() 
     {
-        DontDestroyOnLoad(this.gameObject);
+        if (s_Instance == null)
+        {
+            s_Instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        } else
+        {
+            Destroy(this.gameObject);
+        }
         SetupSong();
     }
 
