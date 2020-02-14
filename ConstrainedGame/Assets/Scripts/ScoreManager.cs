@@ -12,6 +12,8 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI comboText;
     public AudioSource tyreSound, wallHit;
 
+    private int stage;
+    private int laps;
 
     private int score = 0;
     private int activeScore = 0;
@@ -39,6 +41,8 @@ public class ScoreManager : MonoBehaviour
         SetScoreText();
         SetActiveScoreText();
         activeCoroutineScoreFlash = null;
+        stage = 0;
+        laps = 0;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -201,4 +205,16 @@ public class ScoreManager : MonoBehaviour
         activeCoroutineScoreFlash = null;
     }
 
+
+    public void enterStage(int stage)
+    {
+        if (stage == 0 && this.stage == 3)
+        {
+            laps++;
+            this.stage = 0;
+        } else if (stage-1 == this.stage)
+        {
+            this.stage = stage;
+        }
+    }
 }
