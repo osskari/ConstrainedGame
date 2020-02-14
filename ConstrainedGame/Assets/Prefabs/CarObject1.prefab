@@ -276,7 +276,6 @@ GameObject:
   - component: {fileID: 3199786753990620177}
   - component: {fileID: 2898216864132417155}
   - component: {fileID: 2849362872222729076}
-  - component: {fileID: 1072922049623797654}
   - component: {fileID: 3343092459566740374}
   - component: {fileID: 3952827064495467494}
   m_Layer: 0
@@ -343,22 +342,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 131.17
   steering: 2.06
-  scoreText: {fileID: 0}
---- !u!114 &1072922049623797654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2356132702277007502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c94e51842267fe48888a4fdd9edfca0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wheels:
-  - {fileID: 3083156338547529879}
-  - {fileID: 7924884599529650285}
 --- !u!114 &3343092459566740374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,8 +359,6 @@ MonoBehaviour:
   activeScoreText: {fileID: 0}
   comboText: {fileID: 0}
   skids: {fileID: 3952827064495467494}
-  driftThreshold: 0.7
-  skidamarkThreshold: 0.5
 --- !u!114 &3952827064495467494
 MonoBehaviour:
   m_ObjectHideFlags: 0

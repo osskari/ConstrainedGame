@@ -4,16 +4,20 @@ using UnityEngine;
 using TMPro;
 
 public class ScoreManager : MonoBehaviour
-{
-
+{ 
     public Rigidbody2D body;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI activeScoreText;
     public TextMeshProUGUI comboText;
     //Driving under this times give the player a time bonus
-    public float parTime;
+    private float parTime = 100f;
     //Exceeding this time give the player a penalty
-    public float penaltyTime;
+    private float penaltyTime = 120f;
+
+    private int stage;
+    private int laps;
+    private float lapTimer;
+    private bool startLapTimer = false;
 
     private int score = 0;
     private int activeScore = 0;
@@ -42,6 +46,8 @@ public class ScoreManager : MonoBehaviour
         SetScoreText();
         SetActiveScoreText();
         activeCoroutineScoreFlash = null;
+        stage = 0;
+        laps = 0;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -59,6 +65,10 @@ public class ScoreManager : MonoBehaviour
     void Update()
     {
         DrawSkidMarks();
+        if (startLapTimer)
+        {
+            lapTimer += Time.deltaTime;
+        }
     }
 
     private void FixedUpdate()
@@ -69,8 +79,6 @@ public class ScoreManager : MonoBehaviour
         Vector2 perpendicular = Quaternion.AngleAxis(body.angularVelocity > 0 ? -90 : 90, Vector3.forward) * new Vector2(0.0f, 0.5f);
         float counterNormal = Vector2.Dot(body.velocity.normalized, body.GetRelativeVector(perpendicular.normalized));
 
-
-        SetTimeBonusPoints();
 
         //If player crashes, reset combo and active points
 
@@ -196,15 +204,45 @@ public class ScoreManager : MonoBehaviour
 
     void SetTimeBonusPoints()
     {
-        //Get Finish time from player
-
-        //See how far over/under par time he is
-
-        //If player is below par time, award bonus points in chunks i.e 2 sec under = X , 4 sec under = y, 6 sec under = z etc
-
-        //If player is above par but below penalty time threshold, award no bonus points
-
-        //If player is between par time and penalty 
+        float timeDifferencePar = parTime - lapTimer;
+        float timeDifferencePenalty = penaltyTime - lapTimer;
+        Debug.Log(lapTimer);
+        Debug.Log(parTime);
+        if(timeDifferencePar >= 0)
+        {
+            timeBonus = 4000 + (int)timeDifferencePar * 200;
+        }
+        else if(timeDifferencePenalty >= 0)
+        {
+            timeBonus = 0;
+        }
+        else
+        {
+            timeBonus = -4000 + (int)timeDifferencePenalty * 200;
+        }
     }
+    public void enterStage(int stage)
+    {
+        if(this.stage == 0 && laps == 0)
+        {
+            startLapTimer = true;
+        }
 
+        if (stage == 0 && this.stage == 3)
+        {
+            laps++;
+            this.stage = 0;
+        } else if (stage-1 == this.stage)
+        {
+            this.stage = stage;
+        }
+
+        if(laps == 3)
+        {
+            startLapTimer = false;
+            GetComponent<CarMovement>().enabled = false;
+            SetTimeBonusPoints();
+        }
+
+    }
 }

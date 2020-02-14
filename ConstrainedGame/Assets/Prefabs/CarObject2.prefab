@@ -470,7 +470,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 131.17
   steering: 2.06
-  scoreText: {fileID: 0}
 --- !u!114 &1947464802528721218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,8 +504,6 @@ MonoBehaviour:
   activeScoreText: {fileID: 0}
   comboText: {fileID: 0}
   skids: {fileID: 1947464802528721218}
-  driftThreshold: 0.7
-  skidamarkThreshold: 0.42
 --- !u!1 &6427477971729572185
 GameObject:
   m_ObjectHideFlags: 0
