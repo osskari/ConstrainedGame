@@ -14,9 +14,12 @@ public class ScoreManager : MonoBehaviour
     //Exceeding this time give the player a penalty
     private float penaltyTime = 120f;
     public AudioSource tyreSound, wallHit;
+    public GameObject UISystem;
+    public int playerNum;
 
     private int stage;
-    private int laps;
+    [HideInInspector]
+    public int laps;
     private float lapTimer;
     private bool startLapTimer = false;
 
@@ -259,6 +262,10 @@ public class ScoreManager : MonoBehaviour
             if (m) m.enabled = false;
             if (m1) m1.enabled = false;
             SetTimeBonusPoints();
+            UIController uic = UISystem.GetComponent<UIController>();
+            score += activeScore;
+            activeScore = 0;
+            uic.SetScores(playerNum, score, timeBonus);
         }
 
     }

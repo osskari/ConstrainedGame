@@ -6,8 +6,9 @@ using TMPro;
 
 public class UIController : MonoBehaviour
 {
-    public GameObject backgroundPanel, startMenu, endScreen;
+    public GameObject backgroundPanel, startMenu, endScreen, score1, score2;
     public Countdown timer;
+    private int p1Score, p2Score;
     // Start is called before the first frame update
     void Start()
     {
@@ -63,8 +64,28 @@ public class UIController : MonoBehaviour
         }
     }
 
-    public void WinningPlayer(string playerNumber)
+    public void SetScores(int playerNumber, int pScore, int pBonus)
     {
-        endScreen.GetComponentsInChildren<TextMeshProUGUI>(true)[2].text = endScreen.GetComponentsInChildren<TextMeshProUGUI>(true)[2].text.Replace("X", playerNumber);
+        if(playerNumber == 1)
+        {
+            p1Score = pScore + pBonus;
+            TextMeshProUGUI[] p1Text = score1.GetComponentsInChildren<TextMeshProUGUI>(true);
+            p1Text[1].text = "Score: " + pScore;
+            p1Text[2].text = "Time Bonus: " + pBonus;
+            p1Text[3].text = "Final Score: " + p1Score;
+        }
+        else if(playerNumber == 2)
+        {
+            p2Score = pScore + pBonus;
+            TextMeshProUGUI[] p2Text = score2.GetComponentsInChildren<TextMeshProUGUI>(true);
+            p2Text[1].text = "Score: " + pScore;
+            p2Text[2].text = "Time Bonus: " + pBonus;
+            p2Text[3].text = "Final Score: " + p2Score;
+        }
+    }
+
+    public void FindWinner()
+    {
+        endScreen.GetComponentsInChildren<TextMeshProUGUI>(true)[0].text = p1Score > p2Score ? "Player 1 wins!" : p2Score > p1Score ? "Player 2 wins!" : "It's a draw!";
     }
 }
