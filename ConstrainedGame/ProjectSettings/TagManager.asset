@@ -16,8 +16,8 @@ TagManager:
   - 
   - 
   - car1
-  - track
   - car2
+  - track
   - 
   - 
   - 
@@ -42,7 +42,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: car1
-    uniqueID: 4174704125
     locked: 0
