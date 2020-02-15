@@ -1116,7 +1116,7 @@ PrefabInstance:
     - target: {fileID: 721780591259249467, guid: 28efd6acefca9c2489cb9f79d3cb8366,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.35
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 721780591259249467, guid: 28efd6acefca9c2489cb9f79d3cb8366,
         type: 3}
@@ -1515,7 +1515,7 @@ Light:
   m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 1280
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -4667,7 +4667,7 @@ Light:
   m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 1280
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
