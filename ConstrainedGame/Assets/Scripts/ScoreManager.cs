@@ -74,6 +74,7 @@ public class ScoreManager : MonoBehaviour
                 indicator.fillAmount = 0;
                 indicatorBool = false;
                 activeCoroutineScoreFlash = StartCoroutine("ActiveScoreCollisionFlash", 0.3f);
+                ps.transform.position = collision.contacts[0].point;
                 ps.Play();
             }
         }
