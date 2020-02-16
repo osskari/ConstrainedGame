@@ -46,6 +46,10 @@ public class ScoreManager : MonoBehaviour
 
     private Coroutine activeCoroutineScoreFlash;
 
+
+    [SerializeField]
+    ParticleSystem ps;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,6 +74,7 @@ public class ScoreManager : MonoBehaviour
                 indicator.fillAmount = 0;
                 indicatorBool = false;
                 activeCoroutineScoreFlash = StartCoroutine("ActiveScoreCollisionFlash", 0.3f);
+                ps.Play();
             }
         }
     }
